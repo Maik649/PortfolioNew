@@ -37,7 +37,7 @@ setTimeout(() => {
             ${Link('#about', '', '', undefined, 'About Me' )}
             </li>
             <li>
-            ${Link('#references','','',undefined, 'References')}
+            ${Link('#portfolio','','',undefined, 'Portfolio')}
             </li>
             <li>
             ${Link('#contact', '', '', undefined, 'Contact' )}

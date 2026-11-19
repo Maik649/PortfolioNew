@@ -1,0 +1,133 @@
+@use '../base/variablen.scss' as var;
+@use '../abstract/mixings.scss' as mix;
+
+.about-section {
+    overflow-x: clip;
+    @include mix.animate-fade-in(1s, ease-in-out, 0s, -150px, 10%, 35%);
+}
+
+.headline-extra {
+    text-align: left;
+    width: 100%;
+}
+
+.about-content-wrapper {
+    @include mix.flex-between();
+    flex-direction: row;
+    align-items: unset;
+    padding: 2rem;
+    height: 100%;
+    position: relative;
+
+    @include mix.responsive(mobile) {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.about-content-left {
+    flex: 1;
+
+    .about-text {
+        font-size: clamp(1rem, 2vw, 22px);
+        line-height: 1.5;
+        text-align: justify;
+        font-family: var.$font-septenary;
+    }
+}
+
+.about-content-right {
+    flex: 1;
+
+    figure {
+        margin: 50px auto;
+    }
+
+    img {
+        width: calc(60% - 50px);
+        object-fit: cover;
+
+        @include mix.responsive(mobile) {
+            width: calc(50% - 50px);
+        }
+    }
+}
+
+.about-content-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 2rem;
+
+    .about-content-bottom-text {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0 4rem;
+        font-weight: 400;
+        font-size: clamp(1rem, 2vw, 22px);
+        font-family: var.$font-septenary;
+
+        @include mix.responsive(mobile) {
+            padding: 0;
+        }
+
+        img {
+            margin-right: 0.5rem;
+        }
+    }
+
+    .contact-link-button {
+        border: 2px solid var.$footer-color;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        text-decoration: none;
+        color: var.$footer-color;
+        font-size: clamp(1rem, 2vw, 23px);
+
+        @include mix.responsive(mobile) {
+            width: 60%;
+        }
+    }
+
+    .about-link-wrapper {
+        position: relative;
+        transform: translateX(50%);
+        right: 30%;
+        text-align: center;
+        margin-top: 30px;
+        width: 100%;
+
+        @include mix.responsive(mobile) {
+            width: 100%;
+            right: 50%;
+        }
+    }
+}
+
+.about-arrow-bottom-left {
+    display: flex;
+    justify-content: flex-end;
+    height: auto;
+    width: auto;
+
+    img {
+        $translate-x-from: 170px;
+        $translate-y-from: 0px;
+
+        position: relative;
+        bottom: $translate-x-from;
+        right: $translate-y-from;
+
+        @include mix.arrow-on-scroll-right();
+
+
+        @include mix.responsive(mobile) {
+            width: 60%;
+            bottom: 233px;
+            right: -175px;
+
+        }
+    }
+}

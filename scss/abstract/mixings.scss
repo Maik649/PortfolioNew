@@ -1,0 +1,206 @@
+@mixin flex-center() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin flex-between() {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+// Responsive Mixins
+
+@mixin responsive($breakpoint) {
+    @if $breakpoint ==mobile {
+        @media (max-width: 767px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==tablet {
+        @media (min-width: 768px) and (max-width: 1023px) {
+            @content;
+        }
+    }
+
+    @else if $breakpoint ==desktop {
+        @media (min-width: 1024px) {
+            @content;
+        }
+    }
+}
+
+// Animation Mixins
+
+@mixin animate-fade-in-right($duration, $timing-function: ease, $delay: 0s) {
+    @keyframes fade-in-right {
+        from {
+            transform: translateX(100%);
+        }
+
+        to {
+            transform: translateX(0%);
+        }
+    }
+
+    animation: fade-in-right $duration $timing-function $delay;
+}
+
+@mixin animate-fade-in($duration, $timing-function: ease, $delay: 0s, $fade-left, $animation-range-top: 10%, $animation-range-bottom: 35%) {
+    --fade-in-left-offset: #{$fade-left};
+
+    @keyframes fade-in {
+        0% {
+            transform: translate3d(var(--fade-in-left-offset), 0, 0);
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        100% {
+            transform: translate3d(0, 0, 0);
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    animation: fade-in $duration $timing-function $delay both;
+    animation-timeline: view(block);
+    animation-range: $animation-range-top $animation-range-bottom;
+}
+
+
+@mixin animate-fade-in-up($duration, $infinite: infinite, $timing-function: ease-in-out, $delay: 0s) {
+    @keyframes fade-in-up {
+        0% {
+            transform: translate3d(0, -130%, 0);
+            opacity: 0;
+        }
+
+        100% {
+            transform: translate3d(0, 70%, 0);
+            opacity: 1;
+        }
+    }
+
+    animation: fade-in-up $duration $timing-function $delay $infinite;
+}
+
+
+@mixin arrow-on-scroll-right {
+    $arrow-range-top: 33%;
+    $arrow-range-bottom: 85%;
+
+    $translate-x-from: -30px;
+    $translate-y-from: 50px;
+
+    $translate-x-to: 310px;
+    $translate-y-to: 270px;
+
+    @keyframes arrow-on-scroll-right {
+        from {
+            transform: translate($translate-x-from, $translate-y-from) scale(0.3);
+            opacity: 0.5;
+        }
+
+        to {
+            transform: translate(-$translate-x-to, $translate-y-to) scale(0.9);
+            opacity: 1;
+        }
+    }
+
+    animation: arrow-on-scroll-right linear both;
+    animation-timeline: view(block);
+    animation-range: $arrow-range-top $arrow-range-bottom;
+}
+
+@mixin arrow-on-scroll-left {
+    $arrow-range-top: 33%;
+    $arrow-range-bottom: 60%;
+
+    $translate-x-from: -80px;
+    $translate-y-from: -80px;
+
+    $translate-x-to: 230px;
+    $translate-y-to: 40px;
+
+    @keyframes arrow-on-scroll-left {
+        from {
+            transform: translate($translate-x-from, $translate-y-from) scale(0.3);
+            opacity: 0.5;
+        }
+
+        to {
+            transform: translate($translate-x-to, $translate-y-to) scale(0.9);
+            opacity: 1;
+        }
+    }
+
+    animation: arrow-on-scroll-left linear both;
+    animation-timeline: view(block);
+    animation-range: $arrow-range-top $arrow-range-bottom;
+}
+
+@mixin image-rotate($duration, $timing-function: ease-out, ) {
+
+
+    @keyframes imageRotate {
+        0% {
+            transform: translate(0, 0);
+        }
+
+        50% {
+            transform: translate(-25px, -5px);
+        }
+
+        75% {
+            transform: translate(25px, -5px);
+        }
+
+        100% {
+            transform: translate(0, 0);
+        }
+    }
+
+    animation: imageRotate $duration $timing-function;
+
+}
+
+// Mixin für den versetzten Rahmen
+@mixin offset-border($border-color: #000, $border-width: 2px, $offset: 8px) {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        $offset: 16px;
+
+        // Der eigentliche Rahmen
+        border: $border-width solid $border-color;
+
+        // Verschiebung des Rahmens nach unten-rechts
+        transform: translate($offset, $offset);
+
+        // Verhindert, dass der Rahmen Klicks blockiert
+        pointer-events: none;
+
+        // Legt den Rahmen hinter den Inhalt, aber vor den Hintergrund der Box
+        z-index: 1;
+    }
+}
+
+// // Anwendungsbeispiel:
+// .card {
+//   background-color: #f0f0f0;
+//   padding: 20px;
+//   width: 300px;
+//   z-index: 1; // Wichtig, damit z-index: -1 des Rahmens korrekt funktioniert
+
+//   // Mixin aufrufen (Farbe, Rahmenstärke, Versatz)
+//   @include offset-border(#ff4500, 3px, 10px);
+// }

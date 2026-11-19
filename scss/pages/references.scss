@@ -1,0 +1,18 @@
+@use '../base/variablen' as var;
+@use '../abstract/mixings' as mix;
+
+.references-section {
+    @include mix.animate-fade-in(2s, ease-in-out, 1s, 150px, 10%, 35%);
+    overflow-x: clip;
+}
+
+
+.portfolio-content {
+    padding: 40px 0;
+
+    & p {
+        padding: 35px 0;
+        max-width: 50%;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,64 @@
+@font-face {
+    font-family: Syne-Bold;
+    src: url('../../fonts/Syne-Bold.otf') format("opentype");
+}
+    $syne-bold: 'Syne-Bold', Arial, sans-serif;
+@font-face {
+    font-family: Syne-Medium;
+    src: url('../../fonts/Syne-Medium.otf') format("opentype");
+}
+    $syne-medium: 'Syne-Medium', Arial, sans-serif;
+@font-face {
+    font-family: Syne-Extra;
+    src: url('../../fonts/Syne-Extra.otf') format("opentype");
+}
+    $syne-extra: 'Syne-Extra', Arial, sans-serif;
+
+@font-face {
+    font-family: Syne-Italic;
+    src: url('../../fonts/Syne-Italic.otf') format("opentype");
+}
+    $syne-italic: 'Syne-Italic', Arial, sans-serif;
+
+@font-face {
+    font-family: Syne-Mono;
+    src: url('../../fonts/Syne-Mono.otf') format("opentype");
+}
+    $syne-mono: 'Syne-Mono', Arial, sans-serif;
+
+@font-face {
+    font-family: Syne-Regular;
+    src: url('../../fonts/Syne-Regular.otf') format("opentype");
+}
+    $syne-regular: 'Syne-Regular', Arial, sans-serif;
+
+@font-face {
+    font-family: overpass-regular;
+    src: url('../../fonts/./overpass/overpass-regular.otf') format("opentype");
+}
+    $overpass-regular: 'overpass-regular', Arial, sans-serif;
+
+
+@font-face {
+    font-family: overpass-bold;
+    src: url('../../fonts/./overpass/overpass-bold.otf') format("opentype");
+}
+    $overpass-bold: 'overpass-bold', Arial, sans-serif;
+
+@font-face {
+    font-family: overpass-extra;
+    src: url('../../fonts/./overpass/overpass-extra.otf') format("opentype");
+}
+    $overpass-extra: 'overpass-extra', Arial, sans-serif;
+
+@font-face {
+    font-family: overpass-italic;
+    src: url('../../fonts/./overpass/overpass-italic.otf') format("opentype");
+}
+    $overpass-italic: 'overpass-italic', Arial, sans-serif;
+
+@font-face {
+    font-family: overpass-light;
+    src: url('../../fonts/./overpass/overpass-light.otf') format("opentype");
+}
+    $overpass-light: 'overpass-light', Arial, sans-serif;

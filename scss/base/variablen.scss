@@ -1,0 +1,87 @@
+@use '../fonts/fonts';
+@use '../abstract/mixings' as mix;
+
+$primary-color: rgb(255, 252, 243);
+$secondary-color: #00bc8f;
+$footer-color: black;
+$text-color-primary: #2b2a2a;
+$text-color-secondary: white;
+$text-color-tertiary: #00bc8f;
+
+$font-primary: fonts.$syne-bold;
+$font-secondary: fonts.$syne-medium;
+$font-tertiary: fonts.$syne-extra;
+$font-quaternary: fonts.$syne-italic;
+$font-quinary: fonts.$syne-mono;
+$font-senary: fonts.$syne-regular;
+$font-septenary: fonts.$overpass-regular;
+$font-octonary: fonts.$overpass-light;
+$font-denary: fonts.$overpass-bold;
+$font-undenary: fonts.$overpass-extra;
+$font-duodenary: fonts.$overpass-italic;
+
+$header-height: 75px;
+$footer-height: 50px;
+
+$limitet-width: 1440px;
+
+.--primary-btn {
+    background-color: $primary-color;
+    color: $text-color-primary;
+    border: 3px solid $text-color-primary;
+    text-decoration: none;
+    font-size: 1.25rem;
+    font-family: $font-septenary;
+    padding: 1rem 1.0rem 1rem 3.5rem;
+    height: max-content;
+    cursor: pointer;
+    display: block;
+    
+
+    &.--small {
+        min-width: 200px;
+
+        img {
+            position: relative;
+            bottom: -4px;
+        }
+    }
+
+    img {
+        display: inline-block;
+        opacity: 0;
+        visibility: hidden;
+        position: relative;
+        height: 1.25em;
+        width: 1em;
+        left: 2rem;
+        transition: all 0.255s ease;
+
+        @include mix.responsive(mobile) {
+            left: 0;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    &:hover {
+        padding: 1rem 2rem;
+        font-weight: 700;
+        gap: 10px;
+        transition: all 0.255s ease-in;
+        cursor: pointer;
+        img {
+            display: inline-block;
+            opacity: 1;
+            visibility: visible;
+            height: 1.25em;
+            width: 1em;
+            left: 1.25rem;
+            transition: all 0.050s ease-out;
+        }
+    }
+
+    @include mix.responsive(mobile) {
+        padding: 15px;
+    }
+}

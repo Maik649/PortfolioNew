@@ -1,0 +1,155 @@
+@use '../base/variablen' as var;
+@use '../abstract/mixings' as mix;
+
+nav.main-nav {
+    display: none;
+
+    &.open {
+        display: flex;
+        position: absolute;
+        justify-content: space-evenly;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        height: calc(100vh - 70px);
+        top: 70px;
+        left: 0;
+        background-color: var.$primary-color;
+        z-index: 1000;
+        scroll-behavior: unset;
+    }
+
+    ul {
+        align-items: center;
+        display: flex;
+        list-style: none;
+        flex-direction: column;
+        gap: 5rem;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        position: relative;
+    }
+
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        font-size: clamp(36px, 7vw, 58px);
+
+        &:hover {
+            &::after {
+                color: var.$secondary-color;
+                animation: fade-line 0.4s ease-in-out;
+                transition: width 0.4s;
+                width: 100%;
+                left: 0px;
+                right: 0;
+            }
+
+            &::before {
+                color: var.$secondary-color;
+                height: 0%;
+                bottom: 0;
+                transition: all 0.100s ease;
+            }
+        }
+    }
+
+    a::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: 4px;
+        bottom: -5px;
+        left: -25px;
+        right: 0;
+        background: currentColor;
+        transition: all 0.3s ease-in-out;
+
+        @include mix.responsive(mobile){
+                 width: 25px;
+        }
+
+    }
+
+    @keyframes fade-line {
+        from {
+            width: 115%;
+            left: 25px;
+        }
+
+        to {
+            
+            right: 0;
+            left: 80%;
+        }
+    }
+
+    a::before {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 4px;
+        height: 50px;
+        bottom: -5px;
+        left: -25px;
+        background: currentColor;
+        transition: height 0.255ms, width 0.2s;
+          @include mix.responsive(mobile){
+                 height: 25px;
+        }
+    }
+
+    .shape-content {
+        position: absolute;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        --p: 70px;
+        /* control the shape (can be percentage) */
+        height: 180px;
+        width: 100%;
+        aspect-ratio: 1;
+        clip-path: polygon(0 var(--p), 100% 0, 100% 100%, 0 100%);
+        background: #0f0f0f;
+        bottom: 0;
+
+        .shape-content-left {
+            align-items: center;
+            display: inline-flex;
+            width: 50%;
+            height: 50%;
+            justify-content: flex-start;
+            padding: 0 1rem;
+
+            span {
+                color: white;
+                bottom: 0;
+                right: 0;
+
+                z-index: 2;
+            }
+        }
+
+        .shape-content-right {
+            align-items: center;
+            display: inline-flex;
+            width: 50%;
+            height: 50%;
+            justify-content: flex-end;
+            padding: 0 1rem;
+
+            span {
+                color: white;
+                bottom: 0;
+                right: 0;
+                z-index: 2;
+            }
+        }
+
+    }
+}

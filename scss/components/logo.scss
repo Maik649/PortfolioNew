@@ -1,0 +1,66 @@
+@use '../base/variablen' as var;
+@use '../abstract/mixings' as mix;
+
+.logo-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    height: 51px;
+    width: 54px;
+    border-radius: 50%;
+
+    p {
+        display: inline-block;
+        margin: 0 2px;
+        font-weight: bold;
+        font-size: clamp(1.2rem, 1.5rem, 1.9rem);
+        font-family: var.$font-tertiary;
+    }
+
+    p:nth-child(3) {
+        position: absolute;
+        content: "/";
+        top: 0px;
+        left: 65px;
+        background-color: var.$primary-color;
+        width: 7px;
+        height: 56px;
+        transform: rotate(5deg);
+        z-index: 3;
+         @include mix.responsive(mobile){
+                 left: 52px;
+        }
+    }
+
+    p:nth-child(4) {
+        position: relative;
+        top: 5px;
+        left: -4px;
+        background-color: transparent;
+    }
+
+    p:nth-child(5) {
+        position: relative;
+        left: -12px;
+        background-color: transparent;
+    }
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: var.$text-color-primary;
+}
+
+.logo-link:active {
+    color: var.$text-color-primary;
+}

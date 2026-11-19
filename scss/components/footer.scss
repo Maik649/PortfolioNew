@@ -1,0 +1,11 @@
+@use '../base/variablen' as var;
+footer#main-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: var.$footer-color;
+    color: var.$text-color-secondary;
+}
+

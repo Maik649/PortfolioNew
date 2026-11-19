@@ -1,0 +1,161 @@
+@use '../abstract/mixings' as mixing;
+
+.project-list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 7rem;
+    padding: 0 35px;
+    position: relative;
+
+    .project {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        $offset: 1rem;
+        gap: 3.75rem;
+
+        h3:first-child {
+            display: none
+        }
+
+        @include mixing.responsive('mobile') {
+            flex-direction: column;
+            align-items: center;
+
+            h3:first-child {
+                display: block;
+                width: 100%;
+                text-align: left
+            }
+        }
+
+        .content-left {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            width: min(500px, 100%);
+            height: fit-content;
+            background: #0a0a0a;
+            background: -webkit-linear-gradient(rgb(100, 100, 100), rgb(100, 100, 100));
+            background: linear-gradient(rgb(100, 100, 100), rgb(100, 100, 100));
+            @include mixing.offset-border(#00000000, 5px, $offset);
+
+            img {
+                width: 100%;
+                height: auto;
+                opacity: 0.3;
+                transition: all 0.3s ease;
+                object-fit: cover;
+
+                @include mixing.responsive('mobile') {
+                    opacity: 1;
+
+                }
+            }
+
+            .regangel-icon {
+                position: absolute;
+                right: -40px;
+                top: 50%;
+                width: 50px;
+                opacity: 0;
+                visibility: hidden;
+                z-index: 2;
+                transform: rotate(90deg);
+            }
+        }
+
+        .content-right {
+            display: flex;
+            opacity: 0;
+            transform: translateX(10px);
+            flex-direction: column;
+            gap: 1.25rem;
+            width: min(500px, 100%);
+            transition: opacity 0.255s ease, transform 0.255s ease;
+
+            @include mixing.responsive('mobile') {
+                opacity: 1;
+            }
+
+            & h2 {
+                margin: 0;
+                font-size: clamp(1rem, 5vw, 42px);
+            }
+
+            .button-section {
+                display: inline-flex;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            &:hover {
+                opacity: 1;
+            }
+        }
+
+        &:hover {
+            .content-left {
+                @include mixing.offset-border(#161616, 5px, $offset);
+
+                img {
+                    opacity: 1;
+                }
+
+                .regangel-icon {
+                    opacity: 1;
+                    visibility: visible;
+                    transition: all 0.5s ease-in-out;
+                    transform: rotate(0deg);
+                }
+            }
+           
+            .content-right {
+                opacity: 1;
+                visibility: visible;
+                height: auto;
+
+                & h2 {
+                    margin: 0;
+                }
+            }
+        }
+
+        &:nth-child(even) {
+            flex-direction: row-reverse;
+
+            @include mixing.responsive('mobile') {
+                flex-direction: column;
+
+                .content-right {
+                    opacity: 1;
+                    visibility: visible;
+                    height: auto;
+                }
+            }
+
+            & .regangel-icon {
+                left: -7px;
+                transform: rotate(-190deg) !important;
+                transition: all 0.5s ease-in-out;
+                right: auto;
+
+            }
+
+            &:hover {
+                .regangel-icon {
+                    transform: rotate(-90deg) !important;
+                }
+            }
+        }
+
+        @include mixing.responsive('mobile') {
+            h3:last-child {
+                display: none;
+            }
+        }
+    }
+}

@@ -1,0 +1,92 @@
+@use '../base/variablen' as var;
+@use '../abstract/mixings' as mix;
+
+.top-content {
+    position: relative;
+    @include mix.animate-fade-in-right(1s, ease-in-out, 0s);
+}
+
+.hero-section .top-content h1 {
+    font-size: clamp(36px, 8.0vw, 128px);
+    margin: 100px auto 0 auto;
+    width: min-content;
+    font-weight: 800;
+    line-height: 0.85;
+
+    &::after {
+        content: '';
+        display: block;
+        height: 5px;
+        background-color: var.$text-color-primary;
+        position: relative;
+        margin: 5% 0 0 0;
+        width: calc(80% - 6.5%);
+        @include mix.responsive(mobile) {
+            width: calc(62% - 6.5%);
+        }
+    }
+
+    &+.hero-sub-name {
+        position: relative;
+        font-weight: 800;
+        font-size: clamp(16px, 3vw, 48px);
+        color: var.$text-color-tertiary;
+        margin-top: -3%;
+        left: 70%;
+        width: max-content;
+        text-align: center;
+        @include mix.responsive(mobile) {
+            left: 60%;
+        }
+    }
+}
+
+.bottom-content {
+    @include mix.flex-between();
+    position: relative;
+    flex-direction: row;
+    margin-top: 50px;
+    height: 50vh;
+    @include mix.animate-fade-in-right(1s, ease-in-out, 0s);
+}
+
+.contact-info {
+    transform: rotate(-90deg);
+    margin-left: calc(max(0px, -100px) + min(-65px, 4vw));
+
+    .btn-contact {
+        font-size: clamp(16px, 3vw, 24px);
+        color: var.$text-color-primary;
+        text-decoration: unset;
+        font-family: var.$font-octonary;
+    }
+
+    .btn-contact:active {
+        color: var.$text-color-secondary;
+    }
+}
+
+.scroll-down-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 100px;
+
+    img {
+        position: absolute;
+        width: calc(max(14px, 0vw) + min(60px, 2vw));
+        height: calc(max(30px, 0vw) + min(80px, 2.5vw));
+        @include mix.animate-fade-in-up(1.5s, infinite, ease-in-out, 0s);
+    }
+
+    span {
+        font-size: clamp(12px, 2vw, 24px);
+        color: var.$text-color-primary;
+        background-color: var.$primary-color;
+        width: clamp(60px, 3vw, 100px);
+        z-index: 1;
+        height: 136px;
+        margin-bottom: -170px;
+    }
+}

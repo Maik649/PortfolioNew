@@ -1,0 +1,280 @@
+@use '../base/variablen' as var;
+@use '../abstract/mixings' as mix;
+
+.contact-section {
+
+    .contact-wrapper {
+        background-color: #0f0f0f;
+        width: 100%;
+    }
+
+    .--balck {
+        background-color: #0f0f0f;
+    }
+
+    h2 {
+        color: white;
+        margin: 0;
+    }
+
+    h3 {
+        color: var.$text-color-tertiary;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    span {
+        color: white;
+    }
+
+    .shape-content {
+        position: unset;
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        --p: 80px;
+        /* control the shape (can be percentage) */
+        height: 100px;
+        width: 100%;
+        aspect-ratio: 1;
+        clip-path: polygon(0 var(--p), 100% 0, 100% 100%, 0 100%);
+        background: #0f0f0f;
+        top: 0;
+    }
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 2rem auto;
+    padding: 2rem;
+    gap: 4.5rem;
+    height: calc(100vh - 160px);
+
+    .privacy-consent {
+        position: relative;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding-bottom: 2rem;
+
+        input[type="checkbox"] {
+            flex: 0 0 1.1rem;
+            width: 1.1rem;
+            height: 1.1rem;
+            margin-top: 0.2rem;
+            padding: 0;
+            accent-color: var.$text-color-tertiary;
+        }
+
+        >label {
+            color: white;
+            font-size: 1rem;
+            line-height: 1.4;
+            cursor: pointer;
+
+            a {
+                color: var.$text-color-tertiary;
+                text-decoration: underline;
+            }
+        }
+
+        .validation-status {
+            position: absolute;
+            top: calc(100% - 1.5rem);
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: max-content;
+            max-width: 100%;
+            min-height: 25px;
+            visibility: hidden;
+            pointer-events: none;
+
+            &.is-valid,
+            &.is-invalid {
+                visibility: visible;
+            }
+
+            img {
+                display: block;
+                flex: 0 0 25px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .validation-message {
+            font-size: 0.875rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .validation-status.is-valid .validation-message {
+            color: var.$text-color-tertiary;
+        }
+
+        .validation-status.is-invalid .validation-message {
+            color: #e61c40;
+        }
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0 30px #0f0f0f inset !important;
+        -webkit-text-fill-color: white;
+        outline: unset;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+
+    }
+
+    .input-wrapper {
+        position: relative;
+        width: 100%;
+
+        label {
+            position: absolute;
+            top: 25px;
+            left: 10px;
+            color: white;
+            font-size: 1rem;
+            pointer-events: none;
+            transition: all 0.2s ease-in-out;
+        }
+
+        input {
+            width: 100%;
+            border: 3px solid transparent;
+            padding: 2rem 3.5rem 0 2rem;
+            border-bottom: 3px solid gray;
+            background: transparent;
+            color: white;
+            font-size: 1rem;
+
+            &:focus {
+                outline: unset;
+                border: 3px solid white;
+            }
+
+            &:focus~label,
+            &:not(:placeholder-shown)~label {
+                top: -25px;
+            }
+        }
+
+        .validation-status {
+            position: absolute;
+            top: calc(100% + 0.5rem);
+            left: 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            width: max-content;
+            max-width: 100%;
+            min-height: 25px;
+            visibility: hidden;
+            pointer-events: none;
+
+            &.is-valid,
+            &.is-invalid {
+                visibility: visible;
+            }
+
+            img {
+                display: block;
+                flex: 0 0 25px;
+                width: 16px;
+                height: 16px;
+            }
+        }
+
+        .validation-message {
+            font-size: 0.875rem;
+            line-height: 1.25;
+            overflow-wrap: anywhere;
+        }
+
+        .validation-status.is-valid .validation-message {
+            color: #70e61c;
+        }
+
+        .validation-status.is-invalid .validation-message {
+            color: #e61c40;
+        }
+
+        textarea {
+            width: 100%;
+            height: 150px;
+            padding: 1rem;
+            background-color: transparent;
+            border: none;
+            color: white;
+            outline: unset;
+            border: unset;
+            border-bottom: 3px solid white;
+            font-size: 16px;
+
+            &:focus {
+                border: 3px solid white;
+            }
+
+            &:focus~label,
+            &:not(:placeholder-shown)~label {
+                top: -25px;
+            }
+        }
+    }
+
+    .contact-form-footer {
+        display: inline-flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 8px;
+        margin: -2rem;
+
+        >.--primary-btn {
+            margin: 0 auto;
+            background-color: #0f0f0f;
+
+            &.--send {
+                padding: 1rem 4rem;
+                border: 4px solid white;
+                color: white;
+
+                &:hover {
+                    padding: 1rem 4.5rem;
+                }
+            }
+
+
+            &:hover:not(.--primary-btn:enabled) {
+                font-weight: 500;
+                padding: 1rem 4rem;
+            }
+        }
+
+        >.--primary-btn:disabled {
+            cursor: not-allowed;
+            background: gray;
+        }
+
+        .form-feedback {
+            min-height: 1.25rem;
+            color: white;
+            font-size: 0.875rem;
+        }
+
+        .form-feedback.is-success {
+            color: #70e61c;
+        }
+
+        .form-feedback.is-error {
+            color: #e61c40;
+        }
+
+    }
+}

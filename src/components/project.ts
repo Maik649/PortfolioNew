@@ -1,5 +1,6 @@
 import {Link} from './link.component';
 const regangelName = "regangel-icon";
+
 interface ProjectProps {
     id: string;
     link_1: string,

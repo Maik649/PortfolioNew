@@ -16,3 +16,19 @@
         margin: 0 auto;
     }
 }
+
+.card-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+
+
+    .ref-card {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: calc(400px + 20px);
+        border: 1px solid black;
+        border-radius: 8px;
+    }
+}

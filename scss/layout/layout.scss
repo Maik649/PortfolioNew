@@ -30,8 +30,15 @@ section {
         color: #333;
 
         @include mix.responsive(mobile) {
-             margin: 30px auto 0 auto;
+            width: 8em;
         }
- 
+    }
+}
+
+.scroll-Top-Img {
+    @include mix.responsive(mobile) {
+        right: 5px !important;
+        bottom: 5px !important;
+        width: 50px !important;
     }
 }

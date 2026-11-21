@@ -3,9 +3,10 @@ export const setupScrollTop = () => {
   scrollTopButton.src = '../img/icons/to-top.svg';
   scrollTopButton.alt = 'Scroll to Top';
   scrollTopButton.id = 'scroll-top';
+  scrollTopButton.setAttribute("class", "scroll-Top-Img");
   scrollTopButton.style.position = 'fixed';
-  scrollTopButton.style.bottom = '75px';
-  scrollTopButton.style.right = '50px';
+  scrollTopButton.style.bottom = '15px';
+  scrollTopButton.style.right = '15px';
   scrollTopButton.style.display = 'none';
   scrollTopButton.style.cursor = 'pointer';
   scrollTopButton.style.zIndex = '900';

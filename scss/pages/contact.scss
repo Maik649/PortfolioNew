@@ -51,6 +51,10 @@
     padding: 2rem;
     gap: 4.5rem;
     height: calc(100vh - 160px);
+     @include mix.responsive('mobile') {
+        width: 100%;
+        padding: 1rem;
+    }
 
     .privacy-consent {
         position: relative;

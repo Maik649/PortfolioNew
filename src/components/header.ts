@@ -34,13 +34,13 @@ setTimeout(() => {
             <nav class="main-nav">
             <ul>
             <li>
-            ${Link('#about', '', '', undefined, 'About Me' )}
+            ${Link('#about', 'nav-link', '', undefined, 'About Me' )}
             </li>
             <li>
-            ${Link('#portfolio','','',undefined, 'Portfolio')}
+            ${Link('#portfolio','nav-link','',undefined, 'Portfolio')}
             </li>
             <li>
-            ${Link('#contact', '', '', undefined, 'Contact' )}
+            ${Link('#contact', 'nav-link', '', undefined, 'Contact' )}
             </li>
             </ul>
             <div class="shape-content">

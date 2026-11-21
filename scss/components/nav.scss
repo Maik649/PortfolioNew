@@ -31,76 +31,93 @@ nav.main-nav {
 
     li {
         position: relative;
-    }
+        padding: 1rem 2rem;
 
-
-    a {
-        text-decoration: none;
-        color: inherit;
-        font-size: clamp(36px, 7vw, 58px);
+        &.active {
+            color: var.$secondary-color;
+        }
 
         &:hover {
             &::after {
                 color: var.$secondary-color;
-                animation: fade-line 0.4s ease-in-out;
-                transition: width 0.4s;
-                width: 100%;
-                left: 0px;
-                right: 0;
+                animation: fade-line 0.4s ease-out;
+                transition: width 0.4s ease-out;
+                width: 50%;
+                left: 50%;
+                right: 50%;
             }
 
             &::before {
                 color: var.$secondary-color;
                 height: 0%;
-                bottom: 0;
-                transition: all 0.100s ease;
+                bottom: 0px;
+                transition: all 0.255s ease-in-out;
             }
         }
     }
 
-    a::after {
+
+    a {
+        text-decoration: none;
+        color: var.$text-color-primary;
+        font-size: clamp(36px, 7vw, 58px);
+
+        &.active {
+            color: var.$secondary-color;
+        }
+    }
+
+    li::after {
         content: '';
         display: block;
         position: absolute;
-        width: 50px;
-        height: 4px;
+        width: 35px;
+        height: 3px;
         bottom: -5px;
         left: -25px;
         right: 0;
         background: currentColor;
         transition: all 0.3s ease-in-out;
 
-        @include mix.responsive(mobile){
-                 width: 25px;
+        @include mix.responsive(mobile) {
+            width: 25px;
         }
 
     }
 
     @keyframes fade-line {
-        from {
-            width: 115%;
-            left: 25px;
+        0% {
+            width: 0%;
+            left: -25px;
+            right: 0;
         }
 
-        to {
-            
-            right: 0;
-            left: 80%;
+        50% {
+            width: 0%;
+            left: 100%;
+            right: 50%;
+        }
+
+        100% {
+            width: 100%;
+            right: 100%;
+            left: 0;
         }
     }
 
-    a::before {
+    li::before {
         content: '';
         display: block;
         position: absolute;
-        width: 4px;
-        height: 50px;
+        width: 3px;
+        height: 35px;
         bottom: -5px;
         left: -25px;
         background: currentColor;
         transition: height 0.255ms, width 0.2s;
-          @include mix.responsive(mobile){
-                 height: 25px;
+
+        @include mix.responsive(mobile) {
+            height: 25px;
         }
     }
 

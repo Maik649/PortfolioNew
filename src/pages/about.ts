@@ -39,8 +39,8 @@ export function About() {
             <div class="about-arrow-bottom-left">
             ${ImageComponent("arrow-bottom-left", "/img/arrow-bottom-left.svg", "Arrow Bottom Left")}
             </div>
+            
             </div>
-           
         </section>
         
      </article>

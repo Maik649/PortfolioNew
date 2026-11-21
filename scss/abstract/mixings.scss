@@ -168,7 +168,7 @@
 }
 
 // Mixin für den versetzten Rahmen
-@mixin offset-border($border-color: #000, $border-width: 2px, $offset: 8px) {
+@mixin offset-border($border-color: #000, $border-width: 2px, $offset: 5px) {
     position: relative;
 
     &::after {
@@ -178,7 +178,7 @@
         left: 0;
         right: 0;
         bottom: 0;
-        $offset: 16px;
+        $offset: $offset;
 
         // Der eigentliche Rahmen
         border: $border-width solid $border-color;
@@ -191,6 +191,7 @@
 
         // Legt den Rahmen hinter den Inhalt, aber vor den Hintergrund der Box
         z-index: 1;
+
     }
 }
 

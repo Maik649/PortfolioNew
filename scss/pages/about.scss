@@ -4,6 +4,11 @@
 .about-section {
     overflow-x: clip;
     @include mix.animate-fade-in(1s, ease-in-out, 0s, -150px, 10%, 35%);
+
+     @include mix.responsive(mobile){
+        @include mix.animate-fade-in(2s, ease-in-out, 1s, 150px, 0%, 25%);
+
+    }
 }
 
 .headline-extra {
@@ -42,6 +47,7 @@
 
     figure {
         margin: 50px auto;
+        min-height: calc(100vh - 75px);
     }
 
     img {
@@ -49,7 +55,7 @@
         object-fit: cover;
 
         @include mix.responsive(mobile) {
-            width: calc(50% - 50px);
+            width: calc(60% + 80px);
         }
     }
 }

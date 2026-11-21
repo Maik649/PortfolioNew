@@ -3,15 +3,22 @@
 
 .references-section {
     @include mix.animate-fade-in(2s, ease-in-out, 1s, 150px, 10%, 35%);
+
+    @include mix.responsive(mobile) {
+        @include mix.animate-fade-in(2s, ease-in-out, 1s, 150px, 0%, 25%);
+
+    }
+
     overflow-x: clip;
 }
 
 
 .references-content {
     padding: 40px 0;
-    & > p{
+
+    &>p {
         margin: 25px auto;
-         width: clamp(300px, 60%, 700px);
+        width: clamp(300px, 60%, 600px);
     }
 }
 
@@ -20,7 +27,15 @@
     justify-content: space-around;
     gap: 2rem;
     margin-top: 50px;
+    padding: 0 2rem;
+    overflow-y: auto;
 
+    @include mix.responsive('mobile') {
+        width: 100%;
+        overflow-y: scroll;
+        padding: 1rem;
+        gap: 1rem;
+    }
 
     .ref-card {
         display: flex;
@@ -28,20 +43,31 @@
         gap: 1rem;
         width: calc(400px + 20px);
         border: 4px solid black;
-        
+        padding: 0 1.5rem 1.5rem;
+
+        @include mix.responsive('mobile') {
+            min-width: 280px;
+            padding: 0 1rem;
+        }
+
         h4 {
             font-size: clamp(40px, 5vw, 50px);
             font-family: var.$font-septenary;
         }
-        h5{
+
+        h5 {
             font-size: clamp(18px, 5vw, 20px);
             font-family: var.$font-septenary;
         }
-        
-        .ref-description{
+
+        .ref-description {
             font-size: clamp(18px, 5vw, 20px);
             font-family: var.$font-septenary;
+            text-align: justify;
+            line-height: 1.5;
+
         }
+
         &:hover {
             border: 4px solid var.$secondary-color;
 
@@ -49,6 +75,5 @@
                 color: var.$secondary-color;
             }
         }
-
     }
 }
